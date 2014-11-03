@@ -1,4 +1,7 @@
 <html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
 	<body>
 		<h1>Mandelbrot</h1>
 		<canvas id="mandelbrot_canvas" width="820" height="600">
@@ -79,16 +82,14 @@
 		</div>
 		<div>
 			<h2>Import/Export</h2>
+			To save the position you have to "export values". Note the text appearing in the text-box.<br>
+			To load a saved position you have to paste your text into the text-box and "import values".
 			<table>
 				<tr>
 					<td><textarea id="export_import_area"></textarea></td>
 					<td>
 						<input type="button" onClick="exportValues()" value="export values" id="export_button" /><br>
 						<input type="button" onClick="importValues()" value="import values" id="import_button" />
-					</td>
-					<td>
-						To save the position you have to "export values". Note the text appearing in the text-box.<br>
-						To load a saved position you have to paste your text into the text-box and "import values".
 					</td>
 				<tr>
 			</table>

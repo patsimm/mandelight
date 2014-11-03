@@ -13,7 +13,7 @@ function paintPixel(x, y, r, g, b) {
 
 function checkC(imC, reC, depth) {
 	var x = 0, x2, y = 0;
-	for (var i = 0; i < depth; i+=0.1) {
+	for (var i = 0; i < depth; i++) {
 		var x2 = x * x - y * y + imC;
 		y = 2 * x * y + reC;
 		x = x2;
@@ -28,9 +28,9 @@ function checkC(imC, reC, depth) {
 function genColor(d) {
 	var color = [];
 	if(colorMode == "green1") {
-		color['r'] = (((Math.sin(d * 0.1 + 30) + 1) / 2) * 255);
-		color['g'] = (((Math.sin(d * 0.15) + 1) / 2) * 255);
-		color['b'] = (((Math.sin(d * 0.15 + 60) + 1) / 2) * 255);
+		color['r'] = (((Math.sin(d * 0.0125 + 30) + 1) / 2) * 255);
+		color['g'] = (((Math.sin(d * 0.01875) + 1) / 2) * 255);
+		color['b'] = (((Math.sin(d * 0.01875 + 60) + 1) / 2) * 255);
 	} else if(colorMode == "multi1") {
 		color['r'] = (((d) % 3 + 1) * 30) % 255;
 		color['g'] = (((d) % 3 + 1) * 60) % 255;
@@ -40,7 +40,7 @@ function genColor(d) {
 }
 
 function renderImage(zoom, transX, transY, depth) {
-	for (var d = 0; d < depth; d+=0.1) {
+	for (var d = 0; d < depth; d++) {
 		var a, b;
 		var color = genColor(d);
 

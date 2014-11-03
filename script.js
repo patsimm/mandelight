@@ -49,7 +49,7 @@ function drawToCanvas(e) {
 	context.font="12px Consolas";
 	context.fillText("X: " + transX,canvas.width/2-50,14);
 	context.fillText("Y: " + transY,canvas.width/2-50,26);
-	context.fillText("kackspast.de",canvas.width-100,18);
+	context.fillText("by patsimm",canvas.width-85,18);
 	if(state == depth) {
 		stop();
 	}
@@ -89,7 +89,7 @@ function start() {
 	if(typeof(Worker) !== "undefined") {
 		createWorker();
 	} else {
-		alert("Sorry, dein Browser unterstützt Web-Worker nicht!");
+		alert("Sorry, your Browser doesn't support web-workers!");
 	}
 }
 

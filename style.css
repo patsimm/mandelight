@@ -1,0 +1,39 @@
+body {
+	font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+	text-align: center;
+	color: #E0E0E0;
+	font-size: 12;
+	background-color: #202020;
+	padding-top: 20;
+	margin:	0;
+}
+
+table {
+    font-size: 12;
+	margin: auto;s
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color: grey;
+}
+
+a:hover {
+	color: orange;
+}
+
+canvas {
+	display: inline;
+	outline: 0;
+	margin: 10;
+	border: 1px solid #E0E0E0;
+}
+
+canvas.fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    margin: 0;
+}
