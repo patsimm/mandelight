@@ -13,9 +13,11 @@ Shortcuts
 =========
 
 
-WASD	Movement along x and y Axis
-I/K	    Zoom in/Zoom out
-L/J	    Increase/Decrease depth
-U/O	    Import/Export
-Q/E	    Stop/Start
-F       Fullscreen
+| Keys | Action                      |
+|------|-----------------------------|
+| WASD | Movement along x and y Axis |
+| I/K  | Zoom in/Zoom out            |
+| L/J  | Increase/Decrease depth     |
+| U/O  | Import/Export               |
+| Q/E  | Stop/Start                  |
+| F    | Fullscreen                  |
