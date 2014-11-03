@@ -1,19 +1,19 @@
 mandelight
 ==========
 
-mandelight is a lightweight javascript mandelbrot viewer.
+mandelight is a lightweight javascript mandelbrot explorer.
 
 Preview
-=======
+-------
 
-To see a previw you can this projects github pages or a german version on my own
-website.
+to see a preview you can this projects github pages 
 + http://patsimm.github.io/mandelight/
+
+or you can visit a german version on my own website.
 + http://www.kackspast.de/mandelbrot/
 
 Shortcuts
-=========
-
+---------
 
 | Keys | Action                      |
 |------|-----------------------------|
