@@ -43,10 +43,10 @@ function drawToCanvas(e) {
 	context.fillRect(0,0,canvas.width, 30);
 	context.globalAlpha = 1;
 	context.fillStyle = "#FFFFFF";
-	context.font="20px Consolas";
+	context.font="20px Helvetica";
 	context.fillText(state + "/" + depth,5,22);
 	context.fillText("Zoom: " + zoom,100,22);
-	context.font="12px Consolas";
+	context.font="13px Helvetica";
 	context.fillText("X: " + transX,canvas.width/2-50,14);
 	context.fillText("Y: " + transY,canvas.width/2-50,26);
 	context.fillText("by patsimm",canvas.width-85,18);
