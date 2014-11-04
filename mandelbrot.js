@@ -47,7 +47,7 @@ function renderImage(zoom, transX, transY, depth) {
         for (var i = 0; i < height; i++) {
             b = (i * 3 / height - 1.5) / zoom + transY;
             for (var j = 0; j < width; j++) {
-                a = (j * 3 / height - 2.5) / zoom + transX
+                a = (j * 3 / height - 2.5 * height / 600) / zoom + transX
                 if (checkC(a, b, d)) {
                     paintPixel(j, i, color['r'], color['g'], color['b']);
                 }
