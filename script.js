@@ -126,7 +126,9 @@ function fullscreen() {
         //canvas goes full Window
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        canvas.className = "fullscreen"
+        canvas.className = "fullscreen";
+        document.body.scrollTop = 0;
+        document.body.style.overflow = 'hidden';
         start();
     } else {
         stop();
@@ -135,6 +137,7 @@ function fullscreen() {
         canvas.width = 820;
         canvas.height = 600;
         canvas.className = "";
+        document.body.style.overflow = 'visible';
         start();
     }
 }
