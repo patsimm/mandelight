@@ -6,7 +6,7 @@ mandelight is a lightweight javascript mandelbrot explorer.
 Preview
 -------
 
-to see a preview you can this projects github pages 
+to see a preview you can visit this projects github pages 
 + http://patsimm.github.io/mandelight/
 
 or you can visit a german version on my own website.
