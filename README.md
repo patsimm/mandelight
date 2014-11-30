@@ -10,7 +10,7 @@ to see a preview you can visit this projects github pages
 + http://patsimm.github.io/mandelight/
 
 or you can visit a german version on my own website.
-+ http://www.kackspast.de/mandelbrot/
++ http://www.patsimm.com/mandelbrot/
 
 Shortcuts
 ---------
