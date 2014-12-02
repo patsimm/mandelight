@@ -7,7 +7,7 @@ Preview
 -------
 
 to see a preview you can visit this projects github pages 
-+ http://patsimm.github.io/mandelight/
++ http://mandelight.patsimm.com/
 
 or you can visit a german version on my own website.
 + http://www.patsimm.com/mandelbrot/
