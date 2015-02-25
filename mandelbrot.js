@@ -11,13 +11,13 @@ function paintPixel(x, y, r, g, b) {
 	imgData.data[startIndex + 3] = 255;
 }
 
-function checkC(imC, reC, depth) {
-	var x = 0, x2, y = 0, i = 0;
+function mandelbrot(x, y, depth) {
+	var x1 = 0, y1 = 0, x2, i = 0;
 	for (i; i < depth; i+=0.1) {
-		x2 = x * x - y * y + imC;
-		y = 2 * x * y + reC;
-		x = x2;
-		if (x * x + y * y > 4) {
+		x2 = x1*x1 - y1*y1 + x;
+		y1 = 2*x1*y1 + y;
+		x1 = x2;
+		if (x1*x1 + y1*y1 > 4) {
             break;
 		}
 	}
@@ -45,11 +45,14 @@ function renderImage(zoom, transX, transY, depth) {
 		b = (i * 3 / height - 1.5) / zoom + transY;
 		for (var j = 0; j < width; j++) {
 			a = (j * 3 / height - 2.5 * height / 600) / zoom + transX
-            var color = genColor(depth - checkC(a, b, depth) * 10)
+            var color = genColor(depth - mandelbrot(a, b, depth) * 10)
 			paintPixel(j, i, color['r'], color['g'], color['b']);
 		}
+        if (i % 5 == 0) {
+            self.postMessage(imgData);
+        }
 	}
-	self.postMessage(imgData);
+    self.postMessage(imgData);
 }
 
 self.addEventListener('message', function(e) {

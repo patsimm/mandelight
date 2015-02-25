@@ -36,21 +36,23 @@ function updateInputValues() {
 }
 
 function drawToCanvas(e) {
+    var percent;
     context.putImageData(e.data, 0, 0);
-    state++;
+    state++
+    percent = Math.floor(state/(canvas.height/5)*100);
     context.globalAlpha = 0.5;
     context.fillStyle = "#000000";
     context.fillRect(0,0,canvas.width, 30);
     context.globalAlpha = 1;
     context.fillStyle = "#FFFFFF";
     context.font="20px Helvetica";
-    context.fillText(state + "/" + depth,5,22);
+    context.fillText(percent + " %",5,22);
     context.fillText("Zoom: " + zoom,100,22);
     context.font="13px Helvetica";
     context.fillText("X: " + transX,canvas.width/2-50,14);
     context.fillText("Y: " + transY,canvas.width/2-50,26);
     context.fillText("by patsimm",canvas.width-85,18);
-    if(state == depth) {
+    if(state > canvas.height / 5) {
         stop();
     }
 }
