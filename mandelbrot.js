@@ -1,9 +1,7 @@
 var imgData;
-var width;
-var height;
 var colorMode;
 
-function paintPixel(x, y, r, g, b) {
+function paintPixel(x, y, width, r, g, b) {
 	var startIndex = (y*width + x) * 4;
 	imgData.data[startIndex] = r;
 	imgData.data[startIndex + 1] = g;
@@ -39,14 +37,17 @@ function genColor(d) {
 	return color;
 }
 
-function renderImage(zoom, transX, transY, depth) {
-	var a, b;
+function renderImage(zoom, transX, transY, depth, width, height) {
+	var a, b, centerX, centerY;
+    pixelWidth = (3 / height) / zoom
+    x0 = transX - (pixelWidth * width)/2;
+    y0 = transY - (pixelWidth * height)/2;
 	for (var i = 0; i < height; i++) {
-		b = (i * 3 / height - 1.5) / zoom + transY;
+		b = y0 + i * pixelWidth;
 		for (var j = 0; j < width; j++) {
-			a = (j * 3 / height - 2.5 * height / 600) / zoom + transX
+			a = x0 + j * pixelWidth;
             var color = genColor(depth - mandelbrot(a, b, depth) * 10)
-			paintPixel(j, i, color['r'], color['g'], color['b']);
+			paintPixel(j, i, width, color['r'], color['g'], color['b']);
 		}
         if (i % 5 == 0) {
             self.postMessage(imgData);
@@ -57,11 +58,11 @@ function renderImage(zoom, transX, transY, depth) {
 
 self.addEventListener('message', function(e) {
 	imgData = e.data['imageData'];
-	width = e.data['width'];
-	height = e.data['height'];
-	colorMode = e.data['colorMode']
+	colorMode = e.data['colorMode'];
 	renderImage(e.data['zoom'],
 				e.data['transX'],
 				e.data['transY'],
-				e.data['depth']);
+				e.data['depth'],
+                e.data['width'],
+                e.data['height']);
 });
