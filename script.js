@@ -42,16 +42,16 @@ function drawToCanvas(e) {
     percent = Math.floor(state/(canvas.height/5)*100);
     context.globalAlpha = 0.5;
     context.fillStyle = "#000000";
-    context.fillRect(0,0,canvas.width, 30);
+    context.fillRect(0,0, canvas.width, 30);
     context.globalAlpha = 1;
     context.fillStyle = "#FFFFFF";
     context.font="20px Roboto";
-    context.fillText(percent + " %",5,22);
-    context.fillText("Zoom: " + zoom,100,22);
+    context.fillText(percent + " %", 5, 22);
+    context.fillText("Zoom: " + zoom, 100, 22);
     context.font="13px Roboto";
-    context.fillText("X: " + transX,canvas.width/2-50,14);
-    context.fillText("Y: " + transY,canvas.width/2-50,26);
-    context.fillText("by patsimm",canvas.width-85,18);
+    context.fillText("X: " + transX, canvas.width/2-50, 14);
+    context.fillText("Y: " + transY, canvas.width/2-50, 26);
+    context.fillText("by patsimm", canvas.width-85, 18);
     if(state > canvas.height / 5) {
         stop();
     }
@@ -71,6 +71,13 @@ function createWorker() {
     mandelData['colorMode'] = colorMode;
     mandelData['imageData'] = context.createImageData(canvas.width, canvas.height);
 
+    for(var i = 0; i <= canvas.width*canvas.height; i++) {
+        mandelData['imageData'].data[i*4] = 182
+        mandelData['imageData'].data[i*4+1] = 182
+        mandelData['imageData'].data[i*4+2] = 182
+        mandelData['imageData'].data[i*4+3] = 255
+    }
+
     w.postMessage(mandelData);
 }
 
@@ -86,6 +93,8 @@ function start() {
     }
     canvas = document.getElementById('mandelbrot_canvas');
     context = canvas.getContext('2d');
+    context.fillStyle = "#b6b6b6";
+    context.fillRect(0, 0, canvas.width, canvas.height);
 
     updateVarValues();
     if(typeof(Worker) !== "undefined") {
