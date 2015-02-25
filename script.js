@@ -116,10 +116,10 @@ function stop() {
 function move(direction) {
     stop();
     switch(direction) {
-    case "right": transX += 1/zoom; break;
-    case "left": transX -= 1/zoom; break;
-    case "up": transY -= 1/zoom; break;
-    case "down": transY += 1/zoom; break;
+    case "right": transX += .5/zoom; break;
+    case "left": transX -= .5/zoom; break;
+    case "up": transY -= .5/zoom; break;
+    case "down": transY += .5/zoom; break;
     case "zoomin": zoom = zoom * 2; break;
     case "zoomout": zoom = zoom / 2; break;
     case "depthup": depth += 5; break;

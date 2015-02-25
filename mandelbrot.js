@@ -10,16 +10,19 @@ function paintPixel(x, y, width, r, g, b) {
 }
 
 function mandelbrot(x, y, depth) {
-    var x1 = 0, y1 = 0, x2, i = 0;
-    for (i; i < depth; i+=0.1) {
+    var x1 = 0, y1 = 0, x2, i = 0, escape=3;
+    for (i; i < depth; i++) {
         x2 = x1*x1 - y1*y1 + x;
         y1 = 2*x1*y1 + y;
         x1 = x2;
-        if (x1*x1 + y1*y1 > 4) {
+        if (Math.sqrt(x1*x1 + y1*y1) > escape) {
             break;
         }
     }
-    return i;
+    mu = i - Math.log(Math.log(Math.sqrt(x1*x1 + y1*y1))) / Math.log(2);
+    if (isNaN(mu))
+        return depth + escape*escape;
+    return mu;
 }
 
 //generates color for given depth
@@ -40,13 +43,13 @@ function genColor(d) {
 function renderImage(zoom, transX, transY, depth, width, height) {
     var a, b, centerX, centerY;
     pixelWidth = (3 / height) / zoom
-    x0 = transX - (pixelWidth * width)/2;
+    x0 = transX - .5 - (pixelWidth * width)/2;
     y0 = transY - (pixelWidth * height)/2;
     for (var i = 0; i < height; i++) {
         b = y0 + i * pixelWidth;
         for (var j = 0; j < width; j++) {
             a = x0 + j * pixelWidth;
-            var color = genColor(depth - mandelbrot(a, b, depth) * 10)
+            var color = genColor(depth - mandelbrot(a, b, depth))
             paintPixel(j, i, width, color['r'], color['g'], color['b']);
         }
         if (i % 5 == 0) {
