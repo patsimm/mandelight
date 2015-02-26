@@ -1,7 +1,7 @@
 var w;
 var canvas, context, fullWindowState;
 
-var zoom = 1, transX = 0, transY = 0, depth = 30, state, colorMode;
+var zoom = 1, transX = 0, transY = 0, depth = 70, state, colorMode;
 var selectBox = document.getElementById('color_mode')
 
 for (color in genColor) {
@@ -39,7 +39,10 @@ function updateInputValues() {
 
 function drawToCanvas(e) {
     var percent;
+    context.mozCanvasImageSmoothing = true;
     context.putImageData(e.data, 0, 0);
+    context.translate(0.5, 0.5)
+    context.translate(-.5, -.5)
     state++
     percent = Math.floor(state/(canvas.height/5)*100);
     context.globalAlpha = 0.5;
@@ -49,11 +52,15 @@ function drawToCanvas(e) {
     context.fillStyle = "#FFFFFF";
     context.font="20px Roboto";
     context.fillText(percent + " %", 5, 22);
-    context.fillText("Zoom: " + zoom, 100, 22);
+    context.fillText("Zoom " + zoom, 100, 22);
     context.font="13px Roboto";
-    context.fillText("X: " + transX, canvas.width/2-50, 14);
-    context.fillText("Y: " + transY, canvas.width/2-50, 26);
-    context.fillText("by patsimm", canvas.width-85, 18);
+    context.fillText("X " + transX, canvas.width/2, 14);
+    context.fillText("Y " + transY, canvas.width/2, 26);
+
+    context.font="20px Roboto";
+    var text = "D " + depth;
+    var textWidth = context.measureText(text).width;
+    context.fillText(text, canvas.width-18-textWidth, 22);
     if(state > canvas.height / 5) {
         stop();
     }
@@ -124,8 +131,8 @@ function move(direction) {
     case "down": transY += 1/zoom; break;
     case "zoomin": zoom = zoom * 2; break;
     case "zoomout": zoom = zoom / 2; break;
-    case "depthup": depth += 5; break;
-    case "depthdown": depth -= 5; break;
+    case "depthup": depth += 10; break;
+    case "depthdown": depth -= 10; break;
     }
     updateInputValues();
     start();

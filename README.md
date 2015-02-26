@@ -1,5 +1,5 @@
-mandelight
-==========
+mandelight v0.2
+===============
 
 mandelight is a lightweight javascript mandelbrot explorer.
 

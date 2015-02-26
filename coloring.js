@@ -1,6 +1,13 @@
 //generates color for given depth
 var genColor = {
-    "rainbow" : function(d) {
+    "multi2" : function(d) {
+        var color = [];
+        color['r'] = (((Math.sin(d * 0.0125 + 30) + 1) / 2) * 255);
+        color['g'] = (((Math.sin(d * 0.01875) + 1) / 2) * 255);
+        color['b'] = (((Math.sin(d * 0.01875 + 60) + 1) / 2) * 255);
+        return color;
+    },
+    "rgb" : function(d) {
         var color = [];
         d = (d % 360) / 120.
         if (d >= 2) {
@@ -22,18 +29,11 @@ var genColor = {
             return color;
         }
     },
-    "multi1" : function(d) {
-        var color = [];
-        color['r'] = (((d) % 3 + 1) * 30) % 255;
-        color['g'] = (((d) % 3 + 1) * 60) % 255;
-        color['b'] = (((d) % 3 + 1) * 140) % 255;
-        return color;
-    },
-    "multi2" : function(d) {
-        var color = [];
-        color['r'] = (((Math.sin(d * 0.0125 + 30) + 1) / 2) * 255);
-        color['g'] = (((Math.sin(d * 0.01875) + 1) / 2) * 255);
-        color['b'] = (((Math.sin(d * 0.01875 + 60) + 1) / 2) * 255);
-        return color;
-    }
+    // "multi1" : function(d) {
+    //     var color = [];
+    //     color['r'] = (((d) % 3 + 1) * 30) % 255;
+    //     color['g'] = (((d) % 3 + 1) * 60) % 255;
+    //     color['b'] = (((d) % 3 + 1) * 140) % 255;
+    //     return color;
+    // },
 }
