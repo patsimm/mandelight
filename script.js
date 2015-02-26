@@ -39,11 +39,8 @@ function updateInputValues() {
 
 function drawToCanvas(e) {
     var percent;
-    context.mozCanvasImageSmoothing = true;
-    context.putImageData(e.data, 0, 0);
-    context.translate(0.5, 0.5)
-    context.translate(-.5, -.5)
     state++
+    context.putImageData(e.data, 0, 0);
     percent = Math.floor(state/(canvas.height/5)*100);
     context.globalAlpha = 0.5;
     context.fillStyle = "#000000";
@@ -177,7 +174,11 @@ function onResizeHandler(e){
 
 function exportValues() {
     area = document.getElementById("export_import_area");
-    jsonString = '{"zoom":' + zoom + ',"x":' + transX + ',"y":' + transY + ',"depth":' + depth + '}';
+    jsonString = '{"zoom":' + zoom +
+                 ',"x":' + transX +
+                 ',"y":' + transY +
+                 ',"depth":' + depth +
+                 ',"color":' + colorMode + '}';
     area.value = jsonString;
 }
 
@@ -188,6 +189,7 @@ function importValues() {
     transX = values.x;
     transY = values.y;
     depth = values.depth;
+    colorMode = values.color;
     updateInputValues();
     start();
 }

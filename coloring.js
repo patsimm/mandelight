@@ -1,6 +1,6 @@
 //generates color for given depth
 var genColor = {
-    "multi2" : function(d) {
+    "multi" : function(d) {
         var color = [];
         color['r'] = (((Math.sin(d * 0.0125 + 30) + 1) / 2) * 255);
         color['g'] = (((Math.sin(d * 0.01875) + 1) / 2) * 255);
