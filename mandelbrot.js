@@ -9,8 +9,8 @@ function paintPixel(x, y, width, r, g, b) {
     imgData.data[startIndex + 3] = 255;
 }
 
-function mandelbrot(x, y, depth) {
-    var x1 = 0, y1 = 0, x2, i = 0, escape=3;
+function mandelbrot(x, y, depth, escape) {
+    var x1 = 0, y1 = 0, x2, i = 0;
     for (i; i < depth; i++) {
         x2 = x1*x1 - y1*y1 + x;
         y1 = 2*x1*y1 + y;
@@ -19,7 +19,7 @@ function mandelbrot(x, y, depth) {
             break;
         }
     }
-    mu = i - Math.log(Math.log(Math.sqrt(x1*x1 + y1*y1))) / Math.log(2);
+    mu = 5 + i - Math.log(Math.log(Math.sqrt(x1*x1 + y1*y1))) / Math.log(2);
     if (isNaN(mu))
         return depth + escape*escape;
     return mu;
@@ -45,14 +45,14 @@ function renderImage(zoom, transX, transY, depth, width, height) {
     pixelWidth = (3 / height) / zoom
     x0 = transX - .5 - (pixelWidth * width)/2;
     y0 = transY - (pixelWidth * height)/2;
-    for (var i = 0; i < height; i++) {
-        b = y0 + i * pixelWidth;
-        for (var j = 0; j < width; j++) {
-            a = x0 + j * pixelWidth;
-            var color = genColor(depth - mandelbrot(a, b, depth))
-            paintPixel(j, i, width, color['r'], color['g'], color['b']);
+    for (var y = 0; y < height; y++) {
+        b = y0 + y * pixelWidth;
+        for (var x = 0; x < width; x++) {
+            a = x0 + x * pixelWidth;
+            var color = genColor((depth - mandelbrot(a, b, depth, 3.3)))
+            paintPixel(x, y, width, color['r'], color['g'], color['b']);
         }
-        if (i % 5 == 0) {
+        if (y % 5 == 0) {
             self.postMessage(imgData);
         }
     }
