@@ -1,12 +1,14 @@
 var w;
 var canvas, context, fullWindowState;
 
-var zoom = 1;
-var transX = 0;
-var transY = 0;
-var depth = 30;
-var colorMode = "green1"
-var state;
+var zoom = 1, transX = 0, transY = 0, depth = 30, state, colorMode;
+var selectBox = document.getElementById('color_mode')
+
+for (color in genColor) {
+   option = document.createElement("option");
+   option.textContent = color;
+   selectBox.add(option);
+}
 
 function updateVarValues() {
     var zoomIn = document.getElementById("zoom");

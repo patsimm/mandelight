@@ -1,5 +1,6 @@
 var imgData;
-var colorMode;
+
+importScripts('coloring.js')
 
 function paintPixel(x, y, width, r, g, b) {
     var startIndex = (y*width + x) * 4;
@@ -25,22 +26,7 @@ function mandelbrot(x, y, depth, escape) {
     return mu;
 }
 
-//generates color for given depth
-function genColor(d) {
-    var color = [];
-    if(colorMode == "green1") {
-        color['r'] = (((Math.sin(d * 0.0125 + 30) + 1) / 2) * 255);
-        color['g'] = (((Math.sin(d * 0.01875) + 1) / 2) * 255);
-        color['b'] = (((Math.sin(d * 0.01875 + 60) + 1) / 2) * 255);
-    } else if(colorMode == "multi1") {
-        color['r'] = (((d) % 3 + 1) * 30) % 255;
-        color['g'] = (((d) % 3 + 1) * 60) % 255;
-        color['b'] = (((d) % 3 + 1) * 140) % 255;
-    }
-    return color;
-}
-
-function renderImage(zoom, transX, transY, depth, width, height) {
+function renderImage(zoom, transX, transY, depth, width, height, colorMode) {
     var a, b, centerX, centerY;
     pixelWidth = (3 / height) / zoom
     x0 = transX - .5 - (pixelWidth * width)/2;
@@ -49,7 +35,8 @@ function renderImage(zoom, transX, transY, depth, width, height) {
         b = y0 + y * pixelWidth;
         for (var x = 0; x < width; x++) {
             a = x0 + x * pixelWidth;
-            var color = genColor((depth - mandelbrot(a, b, depth, 3.3)))
+            colorIndex = depth - mandelbrot(a, b, depth, 3.3)
+            var color = genColor[colorMode](colorIndex)
             paintPixel(x, y, width, color['r'], color['g'], color['b']);
         }
         if (y % 5 == 0) {
@@ -61,11 +48,11 @@ function renderImage(zoom, transX, transY, depth, width, height) {
 
 self.addEventListener('message', function(e) {
     imgData = e.data['imageData'];
-    colorMode = e.data['colorMode'];
     renderImage(e.data['zoom'],
                 e.data['transX'],
                 e.data['transY'],
                 e.data['depth'],
                 e.data['width'],
-                e.data['height']);
+                e.data['height'],
+                e.data['colorMode']);
 });
