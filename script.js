@@ -1,7 +1,7 @@
 var w;
 var canvas, context, fullWindowState;
 
-var zoom = 1, transX = 0, transY = 0, depth = 70, state, colorMode;
+var zoom = 0, transX = 0, transY = 0, depth = 70, state, colorMode;
 var selectBox = document.getElementById('color_mode')
 
 for (color in genColor) {
@@ -38,7 +38,7 @@ function updateInputValues() {
 }
 
 function drawToCanvas(e) {
-    var percent;
+    var percent, text, textWidth;
     state++
     context.putImageData(e.data, 0, 0);
     percent = Math.floor(state/(canvas.height/5)*100);
@@ -49,14 +49,18 @@ function drawToCanvas(e) {
     context.fillStyle = "#FFFFFF";
     context.font="20px Roboto";
     context.fillText(percent + " %", 5, 22);
-    context.fillText("Zoom " + zoom, 100, 22);
+    context.fillText("ZOOM " + zoom, 70, 22);
     context.font="13px Roboto";
-    context.fillText("X " + transX, canvas.width/2, 14);
-    context.fillText("Y " + transY, canvas.width/2, 26);
+    text = "X " + transX
+    textWidth = context.measureText(text).width;
+    context.fillText(text, canvas.width/2 - textWidth/2, 14);
+    text = "Y " + transY
+    textWidth = context.measureText(text).width;
+    context.fillText(text, canvas.width/2 - textWidth/2, 26);
 
     context.font="20px Roboto";
-    var text = "D " + depth;
-    var textWidth = context.measureText(text).width;
+    text = "DEPTH " + depth;
+    textWidth = context.measureText(text).width;
     context.fillText(text, canvas.width-18-textWidth, 22);
     if(state > canvas.height / 5) {
         stop();
@@ -122,15 +126,15 @@ function stop() {
 function move(direction) {
     stop();
     switch(direction) {
-    case "right": transX += 1/zoom; break;
-    case "left": transX -= 1/zoom; break;
-    case "up": transY -= 1/zoom; break;
-    case "down": transY += 1/zoom; break;
-    case "zoomin": zoom = zoom * 2; break;
-    case "zoomout": zoom = zoom / 2; break;
-    case "depthup": depth += 10; break;
-    case "depthdown": depth -= 10; break;
-    }
+        case "right": transX += .5/Math.pow(2, zoom); break;
+        case "left": transX -= .5/Math.pow(2, zoom); break;
+        case "up": transY -= .5/Math.pow(2, zoom); break;
+        case "down": transY += .5/Math.pow(2, zoom); break;
+        case "zoomin": zoom = zoom + 1; break;
+        case "zoomout": zoom = zoom - 1; break;
+        case "depthup": depth += 10; break;
+        case "depthdown": depth -= 10; break;
+    }n
     updateInputValues();
     start();
 }

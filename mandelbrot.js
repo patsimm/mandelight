@@ -28,7 +28,7 @@ function mandelbrot(x, y, depth, escape) {
 
 function renderImage(zoom, transX, transY, depth, width, height, colorMode) {
     var a, b, centerX, centerY;
-    pixelWidth = (3 / height) / zoom
+    pixelWidth = (3 / height) / Math.pow(2, zoom)
     x0 = transX - .5 - (pixelWidth * width)/2;
     y0 = transY - (pixelWidth * height)/2;
     for (var y = 0; y < height; y++) {

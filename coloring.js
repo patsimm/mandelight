@@ -9,7 +9,7 @@ var genColor = {
     },
     "rgb" : function(d) {
         var color = [];
-        d = (d % 360) / 120.
+        d = (d % 99) / 33.
         if (d >= 2) {
             d -= 2;
             color['r'] = d * 255;

@@ -28,4 +28,4 @@ Places
 ------
 
 In the file places.txt you can find some cool places I've found. Just copy a
-line of the file and click import it at the page to view it.
+line of the file and import it at the page to view it.
