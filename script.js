@@ -182,7 +182,7 @@ function exportValues() {
                  ',"x":' + transX +
                  ',"y":' + transY +
                  ',"depth":' + depth +
-                 ',"color":' + colorMode + '}';
+                 ',"color":"' + colorMode + '"}';
     area.value = jsonString;
 }
 
