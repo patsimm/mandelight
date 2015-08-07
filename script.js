@@ -134,7 +134,7 @@ function move(direction) {
         case "zoomout": zoom = zoom - 1; break;
         case "depthup": depth += 10; break;
         case "depthdown": depth -= 10; break;
-    }n
+    }
     updateInputValues();
     start();
 }
