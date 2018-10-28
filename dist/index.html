@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+    </head>
+    <body>
+        <div class="mandel">
+            <h1>mandelight</h1>
+            <canvas id="mandelbrot_canvas" width="820" height="600">
+            </canvas>
+        </div>
+        <div>
+            <h2>Shortcuts</h2>
+            <table>
+                <tr>
+                    <td width=70>WASD</td>
+                    <td>Movement along x and y Axis</td>
+                </tr>
+                <tr>
+                    <td>I/K</td>
+                    <td>Zoom in/Zoom out</td>
+                </tr>
+                <tr>
+                    <td>L/J</td>
+                    <td>Increase/Decrease depth</td>
+                </tr>
+                <tr>
+                    <td>U/O</td>
+                    <td>Import/Export</td>
+                </tr>
+                <tr>
+                    <td>Q/E</td>
+                    <td>Stop/Start</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>Fullscreen</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h2>Settings</h2>
+            <table>
+                <tr>
+                    <td>Depth:</td>
+                    <td><input type="text" id="depth" /></td>
+                    <td>
+                        How often do you want to iterate? Please enter an <b>Integer</b>!<br>
+                        The higher the value, the longer will the calculation take.
+                    </td>
+                </tr>
+                <tr>
+                    <td>X-Translation:</td>
+                    <td><input type="text" id="transX" /></td>
+                    <td>
+                        Translate the picture along the X-Axis.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Y-Translation:</td>
+                    <td><input type="text" id="transY" /></td>
+                    <td>
+                        Transalte the picture along the Y-Axis.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zoom:</td>
+                    <td><input type="text" id="zoom" /></td>
+                    <td>Zoom into the picture.<br>
+                </tr>
+                <tr>
+                    <td>Colors:</td>
+                    <td>
+                        <select id="color_mode">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="button" onClick="start()" value="Start" id="start_button" /></td>
+                    <td><input type="button" onClick="stop()" value="Stop" id="stop_button" /></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h2>Import/Export</h2>
+            <span>To save the position you have to "export values". Note the text appearing in the text-box.<br>
+            To load a saved position you have to paste your text into the text-box and "import values".</span>
+            <table>
+                <tr>
+                    <td><textarea id="export_import_area"></textarea></td>
+                    <td>
+                        <input type="button" onClick="exportValues()" value="export values" id="export_button" /><br>
+                        <input type="button" onClick="importValues()" value="import values" id="import_button" />
+                    </td>
+                <tr>
+            </table>
+        </div>
+        <script src="coloring.js" type="text/javascript"></script>
+        <script src="script.js" type="text/javascript"></script>
+        <script>
+            updateInputValues();
+            start();
+        </script>
+    </body>
+</html>
