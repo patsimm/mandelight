@@ -4,7 +4,8 @@
   "description": "Web based mandelbrot explorer",
   "main": "dist/index.js",
   "scripts": {
-    "develop": "webpack-dev-server"
+    "develop": "webpack-dev-server",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

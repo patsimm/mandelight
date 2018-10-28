@@ -1,0 +1,47 @@
+body {
+    font:16px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    text-align: center;
+    color: #202020;
+    background-color: #E0E0E0;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    padding-top: 30;
+    padding-bottom: 30;
+}
+
+.mandel {
+    color: #E0E0E0;
+    background-color: #202020;
+    padding-top: 30;
+    padding-bottom: 60;
+    margin-bottom: 30;
+}
+
+table {
+    margin: auto;
+    font-size: 16px;
+}
+
+canvas {
+    display: inline;
+    outline: 0;
+    margin: 50;
+    border: 1px solid #E0E0E0;
+}
+
+canvas.fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    margin: 0;
+}
