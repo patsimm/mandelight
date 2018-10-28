@@ -1,3 +1,5 @@
+const genColor = require('./coloring.js')
+
 var w;
 var canvas, context, fullWindowState;
 
@@ -233,3 +235,6 @@ window.onkeyup = function (e) {
         }
     }
 };
+
+updateInputValues();
+start();

@@ -1,6 +1,6 @@
-var imgData;
+const genColor = require('./coloring.js')
 
-importScripts('coloring.js')
+var imgData;
 
 function paintPixel(x, y, width, r, g, b) {
     var startIndex = (y*width + x) * 4;

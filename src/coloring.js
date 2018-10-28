@@ -1,5 +1,5 @@
 //generates color for given depth
-var genColor = {
+module.exports = {
     "multi" : function(d) {
         var color = [];
         color['r'] = (((Math.sin(d * 0.0125 + 30) + 1) / 2) * 255);
